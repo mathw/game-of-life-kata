@@ -55,5 +55,31 @@ describe('A game of life', function(){
             expect(actualResult).toEqual(expectedResult);
         });
     })
+    
+    describe('Any live cell with more than three live neighbours', function(){
+        var input = [
+            ['.','.','.','.'],
+            ['.','.','*','.'],
+            ['.','*','*','.'],
+            ['.','*','*','.'],
+            ['.','.','.','.'],
+            ['.','.','.','.']
+        ];   
+        
+        it('dies', function(){
+            var expectedResult = [
+                [".",".",".","."],
+                [".","*","*","."],
+                [".",".",".","*"],
+                [".","*","*","."],
+                [".",".",".","."],
+                [".",".",".","."]
+            ]
+            
+            var actualResult = game.run(input);
+               
+            expect(actualResult).toEqual(expectedResult);
+        });
+    })
 });
     

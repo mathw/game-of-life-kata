@@ -1,8 +1,9 @@
-/* global length */
+var constants = require('./constants')
+
 module.exports = {
     countNeighbours: function(cells){
         
-        var cellCounts = [];//[cells.length][cells[0].length];
+        var cellCounts = [];
         
         for(var row = 0; row < cells.length; row++){
             cellCounts.push([]);
@@ -30,7 +31,7 @@ module.exports = {
 function hasLiveCell(row, col, cells){
     if(!cells[row]) return false;
     if(!cells[row][col]) return false;
-    if(cells[row][col] !== "*") return false;
+    if(cells[row][col] !== constants.LIVE_CELL) return false;
     
     return true;
 }
