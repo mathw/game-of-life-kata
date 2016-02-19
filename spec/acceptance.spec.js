@@ -1,8 +1,8 @@
 var game = require("./../game");
 
-describe('A game of life', function(){
+describe('In a game of life', function(){
 
-    describe('Any dead cell with exactly three live neighbours', function() {
+    describe('any dead cell with exactly three live neighbours', function() {
         
         var input = [
             ['.','.','.','.'],
@@ -30,7 +30,7 @@ describe('A game of life', function(){
         });   
     });
     
-    describe('Any live cell with fewer than two live neighbours', function(){
+    describe('any live cell with fewer than two live neighbours', function(){
         var input = [
             ['.','.','.','.'],
             ['.','.','.','.'],
@@ -56,7 +56,7 @@ describe('A game of life', function(){
         });
     })
     
-    describe('Any live cell with more than three live neighbours', function(){
+    describe('any live cell with more than three live neighbours', function(){
         var input = [
             ['.','.','.','.'],
             ['.','.','*','.'],
@@ -72,6 +72,58 @@ describe('A game of life', function(){
                 [".","*","*","."],
                 [".",".",".","*"],
                 [".","*","*","."],
+                [".",".",".","."],
+                [".",".",".","."]
+            ]
+            
+            var actualResult = game.run(input);
+               
+            expect(actualResult).toEqual(expectedResult);
+        });
+    })
+    
+    describe('any live cell with two live neighbours', function(){
+        var input = [
+            ['.','.','.','.'],
+            ['.','*','*','.'],
+            ['.','.','*','.'],
+            ['.','.','.','.'],
+            ['.','.','.','.'],
+            ['.','.','.','.']
+        ];   
+        
+        it('lives', function(){
+            var expectedResult = [
+                [".",".",".","."],
+                [".","*","*","."],
+                [".","*","*","."],
+                [".",".",".","."],
+                [".",".",".","."],
+                [".",".",".","."]
+            ]
+            
+            var actualResult = game.run(input);
+               
+            expect(actualResult).toEqual(expectedResult);
+        });
+    })
+    
+    describe('any live cell with three live neighbours', function(){
+        var input = [
+            ['.','.','.','.'],
+            ['.','*','*','.'],
+            ['.','*','*','.'],
+            ['.','.','.','.'],
+            ['.','.','.','.'],
+            ['.','.','.','.']
+        ];   
+        
+        it('lives', function(){
+            var expectedResult = [
+                [".",".",".","."],
+                [".","*","*","."],
+                [".","*","*","."],
+                [".",".",".","."],
                 [".",".",".","."],
                 [".",".",".","."]
             ]
