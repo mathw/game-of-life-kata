@@ -1,4 +1,4 @@
-var game = require("./../game");
+var game = require("./../serverjs/game");
 
 describe('In a game of life', function(){
 

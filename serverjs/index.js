@@ -9,4 +9,6 @@ var input = [
     ['.','.','.','.']
 ];
 
-game.run(input);
+var output = game.run(input);
+
+console.log(output);

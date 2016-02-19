@@ -1,0 +1,83 @@
+<html> 
+    <head>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    </head>
+    <body>
+        <form>
+            <script>
+                var socket = io();
+                
+                $('form').submit(function(){
+                    var cells = [];
+        
+                    for(var row = 0; row < 4; row++){
+                        cells.push([])
+                        for(var col = 0; col < 4; col++){
+                            cells[row].push([''])
+                            cells[row][col] = document.getElementById(row + "_" + col).checked ? "*" : ".";
+                        }
+                    }   
+                    
+                    socket.emit('form submit', cells);
+                    return false;
+                });
+                
+                socket.on('form output', function(msg){
+                    
+                    var html = '<table>';
+                    
+                    for(var row = 0; row < msg.length; row++){
+                       html += '<tr>'; 
+                        
+                        for(var col = 0; col < msg[row].length; col++){
+                            html += '<td>' +  msg[row][col] + '</td>';
+                        }
+                        
+                        html += '</tr>'; 
+                    }
+                    
+                    html += '</table>';
+                    
+                    $('#output').append(html + "<br />");
+                    
+                    
+                    
+                    
+                    
+                    socket.emit('form submit', msg);
+                });
+            </script>
+                
+            <div>
+                <input id="0_0" type="checkbox" />
+                <input id="0_1" type="checkbox" />
+                <input id="0_2" type="checkbox" />
+                <input id="0_3" type="checkbox" />
+            </div>
+            <div>
+                <input id="1_0" type="checkbox" />
+                <input id="1_1" type="checkbox" />
+                <input id="1_2" type="checkbox" />
+                <input id="1_3" type="checkbox" />
+            </div>
+            <div>
+                <input id="2_0" type="checkbox" />
+                <input id="2_1" type="checkbox" />
+                <input id="2_2" type="checkbox" />
+                <input id="2_3" type="checkbox" />
+            </div>
+            <div>
+                <input id="3_0" type="checkbox" />
+                <input id="3_1" type="checkbox" />
+                <input id="3_2" type="checkbox" />
+                <input id="3_3" type="checkbox" />
+            </div>
+            <div>            
+                <input type="submit" value="Run" />
+            </div>
+            <div id="output">
+            </div>    
+        </form>
+    </body>
+</html>
