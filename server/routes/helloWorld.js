@@ -4,6 +4,6 @@ module.exports = function(router) {
     }),
     router.post('/HelloWorld', function(req, res){
           console.log("POST RECEIVED");
-          res.send("Ta");
+          res.send("");
     });
 };

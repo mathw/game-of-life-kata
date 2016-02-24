@@ -43,4 +43,9 @@ Generation 2:
 
 The input format is similar to that in KataMinesweeper, and is easily parsed in most languages.
 
+##Setup
+Install node packages  
+`$npm install`
 
+Run node server  
+`node server`

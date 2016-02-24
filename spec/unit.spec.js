@@ -1,4 +1,4 @@
-var neighbourCounter = require('./../neighbourCounter');
+var neighbourCounter = require('./../server/game/neighbourCounter');
 
 describe('Given a neighbour counter', function() {
     describe("When no cells are alive", function(){
