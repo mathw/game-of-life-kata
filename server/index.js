@@ -11,6 +11,16 @@ var helloWorldRoute = require('./routes/helloWorld')(router);
 
 var port = process.env.PORT || 8080
 
+app.use(function (req, res, next) {
+
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:' + port);
+    res.setHeader('Access-Control-Allow-Origin', null);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 app.use('/api', router);
 
 app.listen(port);
