@@ -4,18 +4,33 @@ angular.module('gameOfLife')
        return {
             getHelloWorld: function(){
                 
-                var val = $q.defer();
+                var deferred = $q.defer();
                 
                 $http({
                 method: "GET",
                 url: "http://localhost:8080/api/HelloWorld"  
                 }).then(function successCallback(response){
-                    val.resolve(response.data);
+                    deferred.resolve(response.data);
                 }, function errorCallback(response){
-                    val.reject("Error");
+                    deferred.reject("Error");
                 });
                 
-                return val.promise;
+                return deferred.promise;
+            },
+            
+            postHelloWorld: function(){
+                var deferred = $q.defer();
+                
+                $http({
+                    method: "POST",
+                    url: "http://localhost:8080/api/HelloWorld"
+                }).then(function successCallback(response){
+                    deferred.resolve(true);
+                }, function errorCallback(response){
+                    deferred.reject(false);
+                });
+                
+                return deferred.promise;
             }
        }     
 }]);

@@ -25,4 +25,4 @@ app.use('/api', router);
 
 app.listen(port);
 
-console.log('API listenting on post ' + port);
+console.log('API listening on port ' + port);
