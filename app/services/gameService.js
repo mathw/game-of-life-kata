@@ -7,8 +7,8 @@ angular.module('gameOfLife')
                 var deferred = $q.defer();
                 
                 $http({
-                method: "GET",
-                url: "http://localhost:8080/api/HelloWorld"  
+                    method: "GET",
+                    url: "http://localhost:8080/api/HelloWorld"  
                 }).then(function successCallback(response){
                     deferred.resolve(response.data);
                 }, function errorCallback(response){
