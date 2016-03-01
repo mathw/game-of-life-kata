@@ -15,6 +15,9 @@ angular.module('gameOfLife')
                 }, function(fail){
                     alert("Post Fail");
                 });
-       }
+       },
+       
+       $scope.cellsX = 4,
+       $scope.cellsY = 4
         
     }]);
