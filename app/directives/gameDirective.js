@@ -7,35 +7,27 @@ angular.module('gameOfLife')
        };
        return directive;
        
-       function onChange(scope, element, attrs){     
-           var innerHtml = '<table>';
+       function link(scope, element, attrs){
+           scope.RefreshCells = function(){
+                var innerHtml = '<table>';
            
-            for(var x = 0; x < scope.cellsX; x++){
-                innerHtml += '<tr>';
-                
-                for(var y = 0; y < scope.cellsY; y++){
-                    innerHtml += '<td>';
-                    innerHtml += '<input type="checkbox">';
-                    innerHtml += '</td>';
+                for(var x = 0; x < scope.cellsX; x++){
+                    innerHtml += '<tr>';
+                    
+                    for(var y = 0; y < scope.cellsY; y++){
+                        innerHtml += '<td>';
+                        innerHtml += '<input type="checkbox">';
+                        innerHtml += '</td>';
+                    }
+                    
+                    innerHtml += '</tr>';
                 }
                 
-                innerHtml += '</tr>';
-            }
-            
-            innerHtml += '</table>';
-            
-            element.html(innerHtml);
+                innerHtml += '</table>';
+                
+                element.html(innerHtml);
+           }
+           
+           scope.RefreshCells();
        }
-       
-       function link(scope, element, attrs){
-           scope.$watch('cellsX', function(oldValue, newValue){
-               onChange(scope, element, attrs);
-           });
-            scope.$watch('cellsY', function(oldValue, newValue){
-               onChange(scope, element, attrs);
-           });
-       }
-       
-
-        
     });
