@@ -6,6 +6,8 @@ module.exports = function(router) {
           
           var result = game.run(req.body);
           
+          console.log(result);
+          
           res.send(result);
     });
 };

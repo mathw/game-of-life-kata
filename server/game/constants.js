@@ -1,4 +1,4 @@
 module.exports = {
-    DEAD_CELL: ".",
-    LIVE_CELL: "*"
+    DEAD_CELL: false,
+    LIVE_CELL: true
 }

@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 
 var router = express.Router();
 
-var helloWorldRoute = require('./routes/helloWorld')(router);
 var cellsRoute = require('./routes/cells')(router);
 
 app.use(bodyParser.urlencoded({extended:false}));

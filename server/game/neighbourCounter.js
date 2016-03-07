@@ -31,7 +31,7 @@ module.exports = {
 function hasLiveCell(row, col, cells){
     if(!cells[row]) return false;
     if(!cells[row][col]) return false;
-    if(cells[row][col] !== constants.LIVE_CELL) return false;
+    if(cells[row][col] != constants.LIVE_CELL) return false;
     
     return true;
 }
