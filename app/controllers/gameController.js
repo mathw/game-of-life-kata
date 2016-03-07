@@ -8,16 +8,19 @@ angular.module('gameOfLife')
                         $scope.HelloWorld = message;
                     }),
                                 
-       $scope.postHelloWorld = function(){
-           gameService.postHelloWorld()
-                .then(function(success){
-                    alert("Post Success");
-                }, function(fail){
-                    alert("Post Fail");
+       $scope.postCells = function(){
+                     
+           gameService.postCells($scope.cellData)
+                .then(function(data){
+                    $scope.cellData = data;
+                    $scope.refreshFromData();
+                }, function(){
+                    
                 });
        },
        
        $scope.cellsX = 4,
-       $scope.cellsY = 4
-        
+       $scope.cellsY = 4,
+       $scope.cellData = [];
+            
     }]);

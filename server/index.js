@@ -1,13 +1,14 @@
 var express = require('express');
 var app = express();
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 var router = express.Router();
 
 var helloWorldRoute = require('./routes/helloWorld')(router);
+var cellsRoute = require('./routes/cells')(router);
 
-//app.use(bodyParser.urlencoded({extended:true}));
-//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080
 
