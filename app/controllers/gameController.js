@@ -13,6 +13,18 @@ angular.module('gameOfLife')
        
        $scope.cellsX = 4,
        $scope.cellsY = 4,
-       $scope.cellData = [];
+       $scope.cellData = [],
+            
+       $scope.RefreshCells = function(){
+            $scope.cellData = [];                               
+            for(var x = 0; x < $scope.cellsX; x++){
+                $scope.cellData.push([]);                
+                for(var y = 0; y < $scope.cellsY; y++){
+                    $scope.cellData[x].push(false)                              
+                }
+            }
+        },
+        
+        $scope.RefreshCells()
             
     }]);

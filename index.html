@@ -17,7 +17,13 @@
                 Cell Count Y:
                 <input type="text" ng-change="RefreshCells()" ng-model="cellsY" />
                 <br /><br />
-                <cell-grid></cell-grid>
+                <!--Remove comments to use directive for rendering instead of ng-repeat -->
+                <!--<cell-grid></cell-grid>-->
+                <div ng-repeat="row in cellData track by $index">
+                    <div ng-repeat="col in row track by $index" style="display:inline">
+                        <input type="checkbox" ng-model="cellData[$parent.$index][$index]" />
+                    </div>
+                </div>
             </div>                    
         </div>        
     </body>
