@@ -20,9 +20,7 @@
                 <!--Remove comments to use directive for rendering instead of ng-repeat -->
                 <!--<cell-grid></cell-grid>-->
                 <div ng-repeat="row in cellData track by $index">
-                    <div ng-repeat="col in row track by $index" style="display:inline">
-                        <input type="checkbox" ng-model="cellData[$parent.$index][$index]" />
-                    </div>
+                    <input ng-repeat="col in row track by $index" type="checkbox" ng-model="cellData[$parent.$index][$index]" />                
                 </div>
             </div>                    
         </div>        
