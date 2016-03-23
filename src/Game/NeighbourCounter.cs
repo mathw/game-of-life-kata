@@ -12,8 +12,10 @@ namespace Game
     {
         public bool HasLiveCell(int row, int col, Cell[,] cells)
         {
-            if (cells.Length <= row) return false;
-            if (cells.GetLength(row) <= col) return false;
+            if (row < 0) return false;
+            if (col < 0) return false;
+            if (cells.GetLength(0) <= row) return false;
+            if (cells.GetLength(1) <= col) return false;
 
             return cells[row, col].Alive;
         }

@@ -7,29 +7,69 @@ namespace Game.Tests.Unit.NeighbourCounterTests
     public class HasLiveCellNotExistsTests
     {
         private bool _expectedResult;
-        private bool _actualResult;
+
+        private NeighbourCounter _neighbourCounter;
+        private Cell[,] _cells;
 
         [OneTimeSetUp]
-        public void GivenANeighbourCounterHasLiveCellsMethod_WhenANonExistingIndexIsPassed()
+        public void GivenANeighbourCounterHasLiveCellsMethod()
         {
             _expectedResult = false;
 
-            var neighbourCounter = new NeighbourCounter();
+            _neighbourCounter = new NeighbourCounter();
 
-            var cells = new[,] {
+            _cells = new[,] {
                 {
-                    new Cell {Alive = false},
-                    new Cell {Alive = false}
+                    new Cell {Alive = true},
+                    new Cell {Alive = true}
+                },
+                                {
+                    new Cell {Alive = true},
+                    new Cell {Alive = true}
                 }
             };
-
-            _actualResult = neighbourCounter.HasLiveCell(1, 2, cells);
         }
 
         [Test]
-        public void ThenTheMethodReturnsFalse()
+        public void WhenANegativeRowAndColumnIsPassed_ThenTheMethodShouldReturnFalse()
         {
-            Assert.That(_actualResult, Is.EqualTo(_expectedResult));
+            var actualResult = _neighbourCounter.HasLiveCell(-1, -1, _cells);
+            Assert.That(actualResult, Is.EqualTo(_expectedResult));
+        }
+
+        [Test]
+        public void WhenANegativeRowIsPassed_ThenTheMethodShouldReturnFalse()
+        {
+            var actualResult = _neighbourCounter.HasLiveCell(-1, 0, _cells);
+            Assert.That(actualResult, Is.EqualTo(_expectedResult));
+        }
+
+        [Test]
+        public void WhenANegativeColumnIsPassed_ThenTheMethodShouldReturnFalse()
+        {
+            var actualResult = _neighbourCounter.HasLiveCell(0, -1, _cells);
+            Assert.That(actualResult, Is.EqualTo(_expectedResult));
+        }
+
+        [Test]
+        public void WhenANonExistingRowIsPassed_ThenTheMethodShouldReturnFalse()
+        {
+            var actualResult = _neighbourCounter.HasLiveCell(2, 0, _cells);
+            Assert.That(actualResult, Is.EqualTo(_expectedResult));
+        }
+
+        [Test]
+        public void WhenANonExistingColumnIsPassed_ThenTheMethodShouldReturnFalse()
+        {
+            var actualResult = _neighbourCounter.HasLiveCell(0, 2, _cells);
+            Assert.That(actualResult, Is.EqualTo(_expectedResult));
+        }
+
+        [Test]
+        public void WhenANonExistingRowAndColumnIsPassed_ThenTheMethodShouldReturnFalse()
+        {
+            var actualResult = _neighbourCounter.HasLiveCell(2, 2, _cells);
+            Assert.That(actualResult, Is.EqualTo(_expectedResult));
         }
     }
 }
