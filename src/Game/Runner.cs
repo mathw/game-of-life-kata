@@ -2,7 +2,12 @@
 
 namespace Game
 {
-    public class Runner
+    public interface IRunner
+    {
+        Cell[,] Run(Cell[,] providedCells);
+    }
+
+    public class Runner : IRunner
     {
         private readonly INeighbourCounter _neighbourCounter;
 
