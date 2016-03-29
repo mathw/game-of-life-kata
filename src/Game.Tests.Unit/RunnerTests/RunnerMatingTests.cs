@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Game.Tests.Unit.RunnerTests
 {
     [TestFixture]
-    public class RunnerTests
+    public class RunnerMatingTests
     {
         private Mock<INeighbourCounter> _mockNeighbourCounter;
 
@@ -14,27 +14,27 @@ namespace Game.Tests.Unit.RunnerTests
         private Cell[,] _actualCells;
       
         [OneTimeSetUp]
-        public void GivenAGameOfLifeRunner_WhenTheGameIsRun()
+        public void GivenAnArrayOfCellsThatWillMate_WhenTheGameIsRun()
         {
             _providedCells = new[,]{
                 {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}},
-                {new Cell {Alive = false}, new Cell {Alive = true}, new Cell {Alive = false}, new Cell {Alive = false}},
-                {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}},
+                {new Cell {Alive = false}, new Cell {Alive = true}, new Cell {Alive = true}, new Cell {Alive = false}},
+                {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = true}, new Cell {Alive = false}},
                 {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}}
             };
 
             _expectedCells = new[,]{
                 {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}},
-                {new Cell {Alive = false}, new Cell {Alive = true}, new Cell {Alive = false}, new Cell {Alive = false}},
-                {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}},
+                {new Cell {Alive = false}, new Cell {Alive = true}, new Cell {Alive = true}, new Cell {Alive = false}},
+                {new Cell {Alive = false}, new Cell {Alive = true}, new Cell {Alive = true}, new Cell {Alive = false}},
                 {new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}, new Cell {Alive = false}}
             };
 
             var cellCounts = new[,]{
-                {0,0,0,0},
-                {1,1,1,0},
-                {1,0,1,0},
-                {1,1,1,0}
+                {1,2,2,1},
+                {1,2,2,2},
+                {1,3,2,2},
+                {0,1,1,1}
             };
 
             _mockNeighbourCounter = new Mock<INeighbourCounter>();
@@ -45,7 +45,13 @@ namespace Game.Tests.Unit.RunnerTests
         }
 
         [Test]
-        public void ThenTheExpectedResultIsReturned()
+        public void TheNeighbourCounterShouldBeCalledOnce()
+        {
+            _mockNeighbourCounter.Verify(counter => counter.CountNeighbours(It.IsAny<Cell[,]>()), Times.Once);
+        }
+
+        [Test]
+        public void ThenTheCellIsExpectedToDie()
         {
             for (var row = 0; row < _actualCells.GetLength(0); row++)
             {
