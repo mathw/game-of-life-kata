@@ -1,6 +1,6 @@
 ﻿namespace Web.Query.Models
 {
-    public class CellsDto
+    public class CellsContainer
     {
         public bool[][] Cells { get; set; }
     }
