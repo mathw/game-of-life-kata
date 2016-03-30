@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="directives/gameDirective.js"></script>
+    <script src="services/gameService.js"></script>
+    <script src="controllers/gameController.js"></script>
+</head>
+<body>
+    <div ng-app="gameOfLife">
+        <div ng-controller="gameController">
+            <input type="button" value="Post" ng-click="postCells()" />
+            <br /><br />
+            Cell Count X:
+            <input type="text" ng-change="RefreshCells()" ng-model="cellsX" />
+            <br />
+            Cell Count Y:
+            <input type="text" ng-change="RefreshCells()" ng-model="cellsY" />
+            <br /><br />
+            <!--Remove comments to use directive for rendering instead of ng-repeat -->
+            <!--<cell-grid></cell-grid>-->
+            <div ng-repeat="row in cellData track by $index">
+                <input ng-repeat="col in row track by $index" type="checkbox" ng-model="cellData[$parent.$index][$index]" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

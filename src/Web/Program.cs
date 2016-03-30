@@ -23,7 +23,7 @@ namespace Web
 
             WebApp.Start(baseUrl, builder => builder.UseFileServer(new FileServerOptions
             {
-                StaticFileOptions = { FileSystem = new PhysicalFileSystem($"{CurrentDirectoryName}/app/game") },
+                StaticFileOptions = { FileSystem = new PhysicalFileSystem($"{CurrentDirectoryName}/app") },
                 DefaultFilesOptions = { DefaultFileNames = new List<string> {"index.html", "game.html"} },
                 EnableDefaultFiles = true
                 

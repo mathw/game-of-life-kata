@@ -1,6 +1,7 @@
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
+using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -11,8 +12,10 @@ namespace Web.Query
     {
         public void Configuration(IAppBuilder appBuilder)
         {
+            appBuilder.UseCors(CorsOptions.AllowAll);
+
             var config = new HttpConfiguration();
-                
+           
             config.Services.Replace(typeof(IHttpControllerActivator), new StructureMapServiceActivator());
 
             config.Routes.MapHttpRoute("Default", "{controller}/{id}",new { id = RouteParameter.Optional });
@@ -25,7 +28,10 @@ namespace Web.Query
                     ContractResolver = new CamelCasePropertyNamesContractResolver()
                 };
 
+            
             appBuilder.UseWebApi(config);
+
+            
         }
     }
 }

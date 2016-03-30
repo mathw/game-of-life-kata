@@ -3,7 +3,6 @@ using Game;
 using Moq;
 using NUnit.Framework;
 using Web.Query.Controllers;
-using Web.Query.Models;
 using System.Web.Script.Serialization;
 
 namespace Web.Query.Tests.Unit
@@ -11,34 +10,28 @@ namespace Web.Query.Tests.Unit
     [TestFixture]
     public class CellsControllerTests
     {
-        private CellsContainer _expectedResponse;
-        private CellsContainer _actualResponse;
+        private bool[][] _expectedResponse;
+        private bool[][] _actualResponse;
 
         private Mock<IRunner> _mockRunner;
 
         [OneTimeSetUp]
         public void GivenACellsControllerPostMethod_WhenThatMethodIsCalled()
         {
-            var request = new CellsContainer
+            var request = new[]
             {
-                Cells = new[]
-                {
-                    new[] {false, false, false},
-                    new[] {false, true, true},
-                    new[] {false, false, true}
-                }
+                new[] {false, false, false},
+                new[] {false, true, true},
+                new[] {false, false, true}
             };
 
-            _expectedResponse = new CellsContainer
+            _expectedResponse = new[]
             {
-                Cells = new[]
-                {
-                    new[] {false, false, false},
-                    new[] {false, true, true},
-                    new[] {false, true, true}
-                }
+                new[] {false, false, false},
+                new[] {false, true, true},
+                new[] {false, true, true}
             };
-
+        
             var runnerReturn = new[,]
             {
                 {new Cell { Alive = false}, new Cell {Alive = false}, new Cell {Alive = false} },
