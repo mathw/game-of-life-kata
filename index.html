@@ -1,13 +1,21 @@
 <html>
     <head>
-        <script src="node_modules/angular/angular.min.js"></script>
-        <script src="app/app.js"></script>
-        <script src="app/directives/gameDirective.js"></script>
-        <script src="app/services/gameService.js"></script>
-        <script src="app/controllers/gameController.js"></script> 
+        <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+        <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+        <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+        <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <script src="node_modules/rxjs/bundles/Rx.js"></script>
+        <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+        <script src="systemConfig.js"></script>
+        <script>
+            System.import('js/main').then(null, console.error.bind(console));            
+        </script>
+        
     </head>
     <body>
-        <div ng-app="gameOfLife">
+        <game-app></game-app>
+        <!--<div ng-app="gameOfLife">
             <div ng-controller="gameController">
                 <input type="button" value="Post" ng-click="postCells()" />
                 <br /><br />
@@ -17,12 +25,10 @@
                 Cell Count Y:
                 <input type="text" ng-change="RefreshCells()" ng-model="cellsY" />
                 <br /><br />
-                <!--Remove comments to use directive for rendering instead of ng-repeat -->
-                <!--<cell-grid></cell-grid>-->
                 <div ng-repeat="row in cellData track by $index">
                     <input ng-repeat="col in row track by $index" type="checkbox" ng-model="cellData[$parent.$index][$index]" />                
                 </div>
             </div>                    
-        </div>        
+        </div>        -->
     </body>
 </html>

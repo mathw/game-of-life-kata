@@ -4,16 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",    
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "typings": "typings",
+    "postinstall": "typings install" 
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.4.1",
+    "concurrently": "^2.0.0",
+    "lite-server": "^2.1.0",
+    "typescript": "^1.8.9",
+    "typings":"^0.7.11"
   },
   "dependencies": {
-    "angular": "^1.5.0",
+    "angular2": "^2.0.0-beta.13",
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "es6-shim": "^0.35.0",
+    "systemjs": "0.19.25",
+    "express": "^4.13.4",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.6.6"
   }
 }
