@@ -1,1 +1,13 @@
-<h1>test</h1>
+<h1>test2</h1>
+
+<input type="button" value="Post" (click)="PostCells()" />
+<br /><br />
+Cell Count X:
+<input type="text" (change)="RefreshCells()"  [(ngModel)]="CellsX" />
+<br />
+Cell Count Y:
+<input type="text" (change)="RefreshCells()" [(ngModel)]="CellsY" />
+<br /><br />
+<div *ngFor="#cell of CellData; #parentIndex = index">
+    <input *ngFor="#col of cell; #childIndex = index" type="checkbox" [(ngModel)]="CellData[parentIndex][childIndex]" />         
+</div>
