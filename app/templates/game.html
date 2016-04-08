@@ -9,5 +9,7 @@ Cell Count Y:
 <input type="text" (change)="RefreshCells()" [(ngModel)]="CellsY" />
 <br /><br />
 <div *ngFor="#cell of CellData; #parentIndex = index">
-    <input *ngFor="#col of cell; #childIndex = index" type="checkbox" [(ngModel)]="CellData[parentIndex][childIndex]" />         
+    <span *ngFor="#col of cell; #childIndex = index;" *ngForTrackBy="CustomTrackBy">
+        <input type="checkbox" [(ngModel)]="CellData[parentIndex][childIndex]" />
+    </span>         
 </div>

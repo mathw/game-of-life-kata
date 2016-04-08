@@ -17,11 +17,15 @@ export class AppComponent{
     
     constructor(gameService:GameService){
         this._gameService = gameService;
+        this.RefreshCells();      
     }
     
     public PostCells(event){
+            
         this._gameService.postCells(this.CellData)
             .subscribe(cellData => this.CellData = cellData, error => this.ErrorMessage);
+            
+        
     }
     
     public RefreshCells(){
@@ -33,7 +37,9 @@ export class AppComponent{
                 this.CellData[x].push(false);
             }
         }
-        
-        console.log(this.CellData);
+    }
+    
+    public CustomTrackBy(index: number, obj: any): any {
+        return index;
     }
 }
