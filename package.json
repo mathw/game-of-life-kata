@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",    
+    "start": "concurrently \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "typings": "typings",
-    "postinstall": "typings install" 
+    "postinstall": "typings install"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +18,7 @@
     "concurrently": "^2.0.0",
     "lite-server": "^2.1.0",
     "typescript": "^1.8.9",
-    "typings":"^0.7.11"
+    "typings": "^0.7.11"
   },
   "dependencies": {
     "angular2": "^2.0.0-beta.13",
@@ -29,5 +29,16 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
     "zone.js": "0.6.6"
+  },
+  "jspm": {
+    "dependencies": {
+      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.2.0",
+      "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.2.1",
+      "plugin-typescript": "github:frankwallis/plugin-typescript@^4.0.5",
+      "ts": "github:frankwallis/plugin-typescript@^4.0.5"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
   }
 }
