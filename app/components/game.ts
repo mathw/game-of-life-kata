@@ -1,31 +1,31 @@
 import {Component} from 'angular2/core'
-import {GameService} from '../services/game.service'
+import {CellsService} from '../services/cells.service'
 
 @Component({
     selector: 'game-app',
-    templateUrl: 'app/templates/game.html',
-    providers:[GameService]
+    templateUrl: 'app/components/game.html',
+    providers:[CellsService]
 })
 
-export class AppComponent{
+export class GameComponent{
     
-    private _gameService: GameService;
+    private _cellsService: CellsService;
     public CellData:boolean[][]; 
     public ErrorMessage: string;
     public CellsX = 4;
     public CellsY = 4;
     
-    constructor(gameService:GameService){
-        this._gameService = gameService;
+    constructor(cellsService:CellsService){
+        this._cellsService = cellsService;
         this.RefreshCells();      
     }
     
     public PostCells(event){
             
-        this._gameService.postCells(this.CellData)
-            .subscribe(cellData => this.CellData = cellData, error => this.ErrorMessage);
-            
-        
+        this._cellsService.postCells(this.CellData)
+            .subscribe(cellData => {
+                    this.CellData = cellData;
+                }, error => this.ErrorMessage);        
     }
     
     public RefreshCells(){
