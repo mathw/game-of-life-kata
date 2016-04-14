@@ -1,3 +1,15 @@
 <template>
-    ${message}
+    <input type="button" value="Post" click.trigger="PostCells()" />
+    <br /><br />
+    Cell Count X:
+    <input type="text" change.trigger="RefreshCells()"  value.bind="CellsX" />
+    <br />
+    Cell Count Y:
+    <input type="text" change.trigger="RefreshCells()" value.bind="CellsY" />
+    <br /><br />
+    <div repeat.for="row of CellData">
+        <span repeat.for="col of row">
+            <input type="checkbox" checked.bind="CellData[$index][$parent.$index]" />
+        </span>         
+    </div>
 </template>

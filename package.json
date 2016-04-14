@@ -13,32 +13,26 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "jasmine": "^2.4.1",
-    "concurrently": "^2.0.0",
-    "lite-server": "^2.1.0",
-    "typescript": "^1.8.9",
-    "typings": "^0.7.11"
-  },
-  "dependencies": {
-    "angular2": "^2.0.0-beta.13",
-    "body-parser": "^1.15.0",
-    "es6-shim": "^0.35.0",
-    "systemjs": "0.19.25",
-    "express": "^4.13.4",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.6"
-  },
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.2.0",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1.2.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.2.1",
+      "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-beta.1.2.0",
+      "concurrently": "npm:concurrently@^2.0.0",
+      "gulp": "npm:gulp@^3.9.1",
+      "lite-server": "npm:lite-server@^2.2.0",
       "plugin-typescript": "github:frankwallis/plugin-typescript@^4.0.5",
       "ts": "github:frankwallis/plugin-typescript@^4.0.5"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
     }
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.0",
+    "concurrently": "^2.0.0",
+    "express": "^4.13.4",
+    "lite-server": "^2.2.0"
   }
 }
