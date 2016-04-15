@@ -31,10 +31,10 @@ export class GameComponent{
     public RefreshCells(){
         this.CellData = [];
         
-        for(var x = 0; x < this.CellsX; x++){
+        for(var y = 0; y < this.CellsY; y++){
             this.CellData.push([]);
-            for(var y = 0; y < this.CellsY; y++){
-                this.CellData[x].push(false);
+            for(var x = 0; x < this.CellsX; x++){
+                this.CellData[y].push(false);
             }
         }
     }
