@@ -1,26 +1,27 @@
 <html>
     <head>
-        <script src="node_modules/angular/angular.min.js"></script>
-        <script src="app/app.js"></script>
-        <script src="app/directives/gameDirective.js"></script>
-        <script src="app/services/gameService.js"></script>
-        <script src="app/controllers/gameController.js"></script> 
+        <script src="dest/js/neighbourCounter.js"></script>
+        <script src="js/game.js"></script>
     </head>
     <body>
-        <div ng-app="gameOfLife">
-            <div ng-controller="gameController">
-                <input type="button" value="Post" ng-click="postCells()" />
+        <div>
+            <div>
+                <input type="button" onclick="new Game().startGame();" value="Start Game" />
                 <br /><br />
-                Cell Count X:
-                <input type="text" ng-change="RefreshCells()"  ng-model="cellsX" />
-                <br />
-                Cell Count Y:
-                <input type="text" ng-change="RefreshCells()" ng-model="cellsY" />
-                <br /><br />
-                <!--Remove comments to use directive for rendering instead of ng-repeat -->
-                <!--<cell-grid></cell-grid>-->
-                <div ng-repeat="row in cellData track by $index">
-                    <input ng-repeat="col in row track by $index" type="checkbox" ng-model="cellData[$parent.$index][$index]" />                
+                <div>
+                    <input id="0_0" type="checkbox">
+                    <input id="0_1" type="checkbox">
+                    <input id="0_2" type="checkbox">
+                </div>
+                <div>
+                    <input id="1_0" type="checkbox">
+                    <input id="1_1" type="checkbox">
+                    <input id="1_2" type="checkbox">
+                </div>
+                <div>
+                    <input id="2_0" type="checkbox">
+                    <input id="2_1" type="checkbox">
+                    <input id="2_2" type="checkbox">
                 </div>
             </div>                    
         </div>        
