@@ -1,3 +1,0 @@
-interface ICells {
-    length: number;
-}
