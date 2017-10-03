@@ -2,12 +2,12 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "rootDir": "./",
-        "outDir": "./dest",
+        "rootDir": "./src",
+        "outDir": "dest/js",
         "strict": true,
         "noImplicitAny": false        
     },
     "include": [
-        "js/**/*"
+        "src/**/*"
     ]  
 }

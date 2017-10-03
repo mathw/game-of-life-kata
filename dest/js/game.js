@@ -1,45 +1,39 @@
 "use strict";
-var CELL_COUNT_X = 3;
-var CELL_COUNT_Y = 3;
 var Game = (function () {
-    function Game() {
-        this.neighbourCounter = new counters.NeighbourCounter();
+    function Game(neighbourCounter) {
+        this.neighbourCounter = neighbourCounter;
     }
     Game.prototype.startGame = function () {
-        var cells = [];
-        for (var row = 0; row < CELL_COUNT_X; row++) {
-            for (var col = 0; col < CELL_COUNT_Y; col++) {
-                cells[row][col] = document.getElementById(row + '_' + col);
-            }
-        }
-        var neighbourCountGrid = this.neighbourCounter.countNeighbours(cells);
-        for (var row = 0; row < CELL_COUNT_X; row++) {
-            for (var col = 0; col < CELL_COUNT_Y; col++) {
+        var inputElements = this.getCellInputElements();
+        var neighbourCountGrid = this.neighbourCounter.countNeighbours(inputElements);
+        for (var row = 0; row < enums.CELL_COUNT_X; row++) {
+            for (var col = 0; col < enums.CELL_COUNT_Y; col++) {
                 var neighbourCount = neighbourCountGrid[row][col];
-                var cell = cells[row][col];
+                var cell = inputElements[row][col];
                 cell.checked = this.checkForUnderpopulation(neighbourCount, cell);
                 cell.checked = this.checkForOvercrowding(neighbourCount, cell);
                 cell.checked = this.checkForMating(neighbourCount, cell);
             }
         }
     };
-    Game.prototype.checkForUnderpopulation = function (neighbourCount, existingCell) {
-        if (neighbourCount < 2) {
-            return false;
+    Game.prototype.getCellInputElements = function () {
+        var inputElements = [];
+        for (var row = 0; row < enums.CELL_COUNT_X; row++) {
+            inputElements.push(new Array());
+            for (var col = 0; col < enums.CELL_COUNT_Y; col++) {
+                inputElements[row][col] = document.getElementById(row + '_' + col);
+            }
         }
-        return existingCell.checked;
+        return inputElements;
+    };
+    Game.prototype.checkForUnderpopulation = function (neighbourCount, existingCell) {
+        return (neighbourCount < 2) ? enums.DEAD_CELL : existingCell.checked;
     };
     Game.prototype.checkForOvercrowding = function (neighbourCount, existingCell) {
-        if (neighbourCount > 3) {
-            return false;
-        }
-        return existingCell.checked;
+        return (neighbourCount > 3) ? enums.DEAD_CELL : existingCell.checked;
     };
     Game.prototype.checkForMating = function (neighbourCount, existingCell) {
-        if (neighbourCount == 3) {
-            return true;
-        }
-        return existingCell.checked;
+        return (neighbourCount == 3) ? enums.LIVE_CELL : existingCell.checked;
     };
     return Game;
 }());

@@ -1,12 +1,13 @@
 <html>
     <head>
+        <script src="dest/js/enums.js"></script>
         <script src="dest/js/neighbourCounter.js"></script>
-        <script src="js/game.js"></script>
+        <script src="dest/js/game.js"></script>
     </head>
     <body>
         <div>
             <div>
-                <input type="button" onclick="new Game().startGame();" value="Start Game" />
+                <input type="button" onclick="new Game(new counters.NeighbourCounter()).startGame();" value="Start Game" />
                 <br /><br />
                 <div>
                     <input id="0_0" type="checkbox">

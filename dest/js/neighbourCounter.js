@@ -33,12 +33,12 @@ var counters;
         };
         NeighbourCounter.prototype.hasLiveCell = function (row, col, cells) {
             if (!cells[row])
-                return false;
+                return enums.DEAD_CELL;
             if (!cells[row][col])
-                return false;
-            if (cells[row][col].checked != true)
-                return false;
-            return true;
+                return enums.DEAD_CELL;
+            if (cells[row][col].checked != enums.LIVE_CELL)
+                return enums.DEAD_CELL;
+            return enums.LIVE_CELL;
         };
         return NeighbourCounter;
     }());
