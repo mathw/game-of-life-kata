@@ -1,0 +1,26 @@
+{
+  "name": "game-of-life-kata",
+  "version": "1.0.0",
+  "description": "This was presented as a PreparedKata at XP2005, by Emmanuel Gaillot.",
+  "main": "index.js",
+  "dependencies": {
+    "tslint": "^5.7.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scott-Lyons/game-of-life-kata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scott-Lyons/game-of-life-kata/issues"
+  },
+  "homepage": "https://github.com/Scott-Lyons/game-of-life-kata#readme"
+}
