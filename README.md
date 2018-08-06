@@ -1,4 +1,4 @@
-##About this Kata
+## About this Kata
 This was presented as a PreparedKata at XP2005, by Emmanuel Gaillot.
 
 * Difficulty - medium
@@ -6,7 +6,7 @@ This was presented as a PreparedKata at XP2005, by Emmanuel Gaillot.
 * Solution should ideally be test-driven
 * Prove your solution with a variation of inputs
 
-##Problem Description
+## Problem Description
 
 This Kata is about calculating the next generation of Conway's game of life, given any starting position. See http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for background.
 
@@ -19,7 +19,7 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 
 You should write a program that can accept an arbitrary grid of cells, and will output a similar grid showing the next generation.
 
-###Clues
+### Clues
 
 The input starting position could be a text file that looks like this:
 
