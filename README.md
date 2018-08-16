@@ -1,3 +1,9 @@
+## About this implementation
+
+This implementation is a Rust solution put together on a sleepless morning by Matthew Walton. Thanks to my cat for getting me in the mood for some coding.
+
+Written on Rust 1.28, but probably works back to 1.22 (untested, but I do use the Try impl on Option<T> which was introduced in 1.22).
+
 ## About this Kata
 This was presented as a PreparedKata at XP2005, by Emmanuel Gaillot.
 
